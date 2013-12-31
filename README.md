@@ -1,3 +1,5 @@
+Perceptron
+==
 Here we take a look at one of the simplest learning algorithms in machine learning. At its simplest, a percetron takes a vector of inputs **x** = (x<sub>1</sub>, x<sub>2</sub>,...,x<sub>n</sub>), weights each component and outputs a single binary variable, "yes" or "no", depending on whether a weighted sum exceeds some threshold.
 
 We can visualize our perceptron as a collection of inputs that are weighted to give a single output: ![Simple Perceptron](plots/percep.jpg)
@@ -13,6 +15,9 @@ So where exactly do these weights come from? This is where our learning algorith
 
 That's it, pretty simple. In each iteration we compute out "expected" classification for each observation. If that expectation does not match the label for that observation, the weights are updated accordingly so that we are more likely to correctly classify that observation in the future.
 
+
+Examples
+==
 As is, the code can handle as many dimensions as you'd like but for simplicity's sake I'd like to show an example in 2D and one in 3D.
 
 In 2D we set our threshold to 0.75 and generate our data using `Random.Unit(1000, 2, 0.75)`: ![Simple 2D Data](plots/2Dplot.jpeg) 
