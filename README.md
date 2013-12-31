@@ -17,4 +17,4 @@ As is, the code can handle as many dimensions as you'd like but for simplicity's
 
 In 2D we set our threshold to 0.75 and generate our data using `Random.Unit(1000, 2, 0.75)`: ![Simple 2D Data](plots/2Dplot.jpeg) 
 
-The true decision boundary is y = -x + 0.75. We then call `Perceptron` using the output from `Random.Unit` and our threshold and find the line y = -0.9965821x + -0.7490508, a pretty good approximation: ![2D Perceptron Approximation](plots/2Dapprox.jpeg)
+The true decision boundary is *y = -x + 0.75*. We then call `Perceptron` using the output from `Random.Unit` and our threshold and find the line *y = -0.9965821x + -0.7490508*, a pretty good approximation: ![2D Perceptron Approximation](plots/2Dapprox.jpeg)
