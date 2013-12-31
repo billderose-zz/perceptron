@@ -1,6 +1,8 @@
 Perceptrons
 ==
-Here we take a look at one of the simplest learning algorithms in machine learning. At its simplest, a percetron takes a vector of inputs **x** = (x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>n</sub>), weights each component, and outputs a binary variable, "yes" or "no", depending on whether a weighted sum exceeds some pre-determined threshold. We can visualize the weighted inputs as such:  ![Simple Perceptron](plots/percep.jpg)
+Here we take a look at one of the oldest algorithms in machine learning. At its simplest, a perceptron takes a vector of inputs **x** = (x<sub>1</sub>, x<sub>2</sub>, . . . , x<sub>n</sub>), weights each component, and outputs a binary variable, "yes" or "no", depending on whether a weighted sum exceeds some pre-determined threshold. We can visualize the weighted inputs as such:  
+
+![Simple Perceptron](plots/percep.jpg)
 
 Let's ground ourselves in a concrete example to flesh out some of these ideas a bit more. If we are a bank that lends money there should be some processes by which we decide to grant, or not grant, credit to a customer. Then each component of **x** is an attribute of our customer such as age, outstanding debt, or number of dependents. 
 
@@ -13,19 +15,19 @@ Learning
 ==
 So where exactly do these weights come from? This is where our learning algorithm comes in. We briefly outline the steps it takes here, but for a more in-depth look check out the `Perceptron` function in the R source file.
 
-1. Initialize w<sub>0</sub> = - threshold and all other weights to random values (I use random uniform but random normal are OK).
+1. Initialize w<sub>0</sub> = - threshold and all other weights to random values (we use random uniform here but random normal are OK, too).
 2. While any point is misclassified:
-   ..1. For each observation:
-	..1. If label and classification conflict, update weight and continue
+   1. For each observation:
+     1. If label and classification conflict, update weight and continue
 
-That's it, pretty simple. In each iteration we compute our "expected" classification for each observation. If that expectation does not match the label for that observation, the weights are updated accordingly so that we are more likely to correctly classify that observation in the future.
+That's it, pretty simple. In each iteration we compute our "expected" classification for each observation. If that expectation does not match the label for that observation, the weights are updated accordingly so that we are more likely to correctly classify that observation in the future. Neural networks are multi-layer perceptrons that combine many linear boundaries to create more complex classifiers.
 
 
 Examples
 ==
 2D
 ---
-As is, the code can handle as many dimensions as you'd like but for simplicity's sake I'd like to show an example in 2D and one in 3D.
+As is, the code can handle as many dimensions as you'd like but for simplicity's sake we present examples in two and three-dimensions
 
 In 2D we set our threshold to 0.75 and generate our data using `Random.Unit(1000, 2, 0.75)`: ![Simple 2D Data](plots/2Dplot.jpeg) 
 
@@ -33,7 +35,7 @@ The true decision boundary is *y = -x + 0.75*. We then call `Perceptron` using t
 
 3D
 --
-In 3D, we use a different threshold of 1.5 and generate data using an analagous call to `Random.Unit`, only this time specifying we want three-dimensional points:
+In 3D, we use a threshold of 1.5 and generate data using an analagous call to `Random.Unit`, only this time specifying we want three-dimensional points:
 ![Simple 3D Data](plots/3Dpoint.png)
 
 Here, the true decision boundary is a plane of the form *x + y + z = 1.5*. Again using the output straight from `Random.Unit` as the input to `Perceptron`, we are able to find the plane *1.0077008x + 1.0021209y + 0.9928143z = -1.5000002*:
