@@ -32,7 +32,7 @@ Perceptron <- function(data, threshold) {
     misclassfied <- FALSE
     for (i in 1:n) {
       if (label[i] * Classify(obs[i , ], w) <= 0) {
-        w <- w + label[i] * obs[i , ]
+        w <- (w + label[i]) * as.numeric(obs[i , ])
         misclassfied <- TRUE
       }
     }
