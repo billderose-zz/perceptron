@@ -27,15 +27,18 @@ Perceptron <- function(data, threshold) {
   label <- data[ , 1]
   obs <- data[ , 2:ncol(data)]
   misclassfied <- TRUE
+  epocs <- 0
   while (misclassfied) {
     misclassfied <- FALSE
     for (i in 1:n) {
       if (label[i] * Classify(obs[i , ], w) <= 0) {
-        w <- w + label[i] * obs[i , ]
+        w <- (w + label[i]) * as.numeric(obs[i , ])
         misclassfied <- TRUE
       }
     }
+    epocs <- epocs + 1
   }
+  print(paste("EPOCs: ", as.character(epoc)))
   return(w)
 }
 
